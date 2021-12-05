@@ -23,7 +23,7 @@ class ViewController: UIViewController, WKUIDelegate {
         
 //        let request = URLRequest(url: URL(string: "https://www.google.com")!)
 //        webview.load(request)
-        
+    
 //        let html = """
 //        <html>
 //        <body>
@@ -45,17 +45,37 @@ class ViewController: UIViewController, WKUIDelegate {
 //                
 //            }
 //        }
+//=======
+//        let html = """
+//        <html>
+//        <body>
+//        <h1>Hello, Swift!</h1>
+//        </body>
+//        </html>
+//
+//        """
+        
+        webview.loadHTMLString(html, baseURL: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
+            //let json = self.makeData()
+            let jsonString: String = self.makeData()
+            webview.evaluateJavaScript("getString(" + jsonString + ")") { result, Error in
+                
+            }
+        }
     }
     
-    func makejavafunc() {
+    func makejavafunc() -> String {
         let jsonFunc =
                     """
                     ;(function() {
                         function getString(JSON json) throws JSONException {
-                         messageHandlers[handlerName] = handler;
+                            return json.toString();
                         }
                     }
                     """
+        return jsonFunc
     }
     
     
