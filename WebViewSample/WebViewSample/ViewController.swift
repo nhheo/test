@@ -128,18 +128,13 @@ class ViewController: UIViewController, WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         NSLog(message)
     }
-
-
-<<<<<<< HEAD
     // rebase - test2
-=======
 }
 
 struct nams: Codable {
     var s1 = ""
     var s2 = ""
     var dals = [dal]()
->>>>>>> 39eaee9 (test4)
 }
 
 struct dal: Codable {
