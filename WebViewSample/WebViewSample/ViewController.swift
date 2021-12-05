@@ -6,13 +6,25 @@
 //
 
 import UIKit
+import WebKit
+
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        initUI()
     }
+    
+    func initUI() {
+        let webview = WKWebView(frame: view.frame)
+        view.addSubview(webview)
+        
+        let request = URLRequest(url: URL(string: "https://www.naver.com")!)
+        webview.load(request)
+    }
+    
 
 
 }
