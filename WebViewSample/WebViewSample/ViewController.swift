@@ -34,11 +34,21 @@ class ViewController: UIViewController, WKUIDelegate {
         
         let html = """
         <html>
+        <head>
+        <script type="text/javascript">
+            function getString() {
+                alert("func() head 호출");
+            }
+            // onclick은 태그 클릭할때의 이벤트
+            // 자바스크립트는  1.head 2.body
+            // 안에서 실행할 수 있다
+            // 또한 외부 파일도 불러와서 실행할 수 있다(js파일)
+        </script>
+        </head>
         <body>
         <h1>Hello, Swift!</h1>
         </body>
         </html>
-        
         """
         
         webview.loadHTMLString(html, baseURL: nil)
@@ -46,9 +56,12 @@ class ViewController: UIViewController, WKUIDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
             //let json = self.makeData()
             let jsonString: String = self.makeData()
-            webview.evaluateJavaScript("getString(" + jsonString + ")") { result, Error in
+            webview.evaluateJavaScript("getString()") { result, Error in
                 
             }
+//            webview.evaluateJavaScript("getString(" + jsonString + ")") { result, Error in
+//
+//            }
         }
     }
     
@@ -109,8 +122,13 @@ class ViewController: UIViewController, WKUIDelegate {
             
         }
         
-        return ""
+        return "1234"
     }
+    
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        NSLog(message)
+    }
+
 
 }
 
