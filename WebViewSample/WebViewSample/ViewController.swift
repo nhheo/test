@@ -18,7 +18,15 @@ class ViewController: UIViewController, WKUIDelegate {
     }
     
     func initUI() {
-        let webview = WKWebView(frame: view.frame)
+        let config = WKWebViewConfiguration()
+
+        let bridgeCall = makejavafunc()
+        let bridgeScript = WKUserScript.init(source: bridgeCall, injectionTime: WKUserScriptInjectionTime.atDocumentStart, forMainFrameOnly: false)
+        
+        config.userContentController.addUserScript(bridgeScript)
+        config.preferences.javaScriptCanOpenWindowsAutomatically = true;
+
+        let webview = WKWebView(frame: view.frame, configuration: config)
         view.addSubview(webview)
         
 //        let request = URLRequest(url: URL(string: "https://www.google.com")!)
