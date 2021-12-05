@@ -31,9 +31,6 @@ class ViewController: UIViewController, WKUIDelegate {
         </body>
         </html>
         
-        public static String getString(JSON json) throws JSONException {
-            return json.toString();
-        }
         """
         
         webview.loadHTMLString(html, baseURL: nil)
@@ -47,15 +44,16 @@ class ViewController: UIViewController, WKUIDelegate {
         }
     }
     
-    func makejavafunc() {
+    func makejavafunc() -> String {
         let jsonFunc =
                     """
                     ;(function() {
                         function getString(JSON json) throws JSONException {
-                         messageHandlers[handlerName] = handler;
+                            return json.toString();
                         }
                     }
                     """
+        return jsonFunc
     }
     
     
