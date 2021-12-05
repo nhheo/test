@@ -25,7 +25,9 @@ class ViewController: UIViewController {
         webview.load(request)
     }
     
-
+    func call() {
+        
+    }
 
 }
 
