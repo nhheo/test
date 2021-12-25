@@ -130,6 +130,11 @@ class ViewController: UIViewController, WKUIDelegate {
     }
 
 
+    func call() {
+        
+    }
+
+    
 }
 
 struct nams: Codable {
@@ -137,6 +142,8 @@ struct nams: Codable {
     var s2 = ""
     var dals = [dal]()
 }
+
+
 
 struct dal: Codable {
     var d1 = ""
