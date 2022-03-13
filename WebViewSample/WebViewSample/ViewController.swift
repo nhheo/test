@@ -15,6 +15,18 @@ class ViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         
         initUI()
+        
+        var strJson = "{\"a\":\"테스트\n합니다.\"}"
+        strJson = strJson.replacingOccurrences(of: "\n", with: "\\n")
+        let json = try? JSONSerialization.jsonObject(with: strJson.data(using: .utf8)!, options: [])
+        
+        
+//        guard let responseData = try? JSONSerialization.jsonObject(with: data, options: []) else {
+//            isError = true
+//            errorMessage = "fail to convert json to array"
+//            YYLoadingBar.sharedLoadingBar.hide()
+
+        
     }
     
     func initUI() {
@@ -84,10 +96,10 @@ class ViewController: UIViewController, WKUIDelegate {
         nam.s2 = "test2"
         
         for _ in 0 ..< 2 {
-            var dal = dal()
-            dal.d1 = "test3"
-            dal.d2 = "test4"
-            nam.dals.append(dal)
+            var dd = dal()
+            dd.d1 = "test3"
+            dd.d2 = "test4"
+            nam.dals.append(dd)
         }
         
         do {
@@ -107,10 +119,10 @@ class ViewController: UIViewController, WKUIDelegate {
         nam.s2 = "test2"
         
         for _ in 0 ..< 2 {
-            var dal = dal()
-            dal.d1 = "test3"
-            dal.d2 = "test4"
-            nam.dals.append(dal)
+            var dd = dal()
+            dd.d1 = "test3"
+            dd.d2 = "test4"
+            nam.dals.append(dd)
         }
         
         do {
