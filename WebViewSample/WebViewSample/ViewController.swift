@@ -30,6 +30,7 @@ class ViewController: UIViewController, WKUIDelegate {
     }
     
     func initUI() {
+        //let config = WKWindowFeatures()
         let config = WKWebViewConfiguration()
 
         let bridgeCall = makejavafunc()
