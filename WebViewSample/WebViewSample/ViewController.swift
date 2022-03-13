@@ -32,7 +32,8 @@ class ViewController: UIViewController, WKUIDelegate {
     func initUI() {
         //let config = WKWindowFeatures()
         let config = WKWebViewConfiguration()
-
+111
+        
         //let bridgeCall = makejavafunc()
         let bridgeCall = makejavafunc()
         let bridgeScript = WKUserScript.init(source: bridgeCall, injectionTime: WKUserScriptInjectionTime.atDocumentStart, forMainFrameOnly: false)
