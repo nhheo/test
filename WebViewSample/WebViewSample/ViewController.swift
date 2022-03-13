@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKUIDelegate {
         strJson = strJson.replacingOccurrences(of: "\n", with: "\\n")
         let json = try? JSONSerialization.jsonObject(with: strJson.data(using: .utf8)!, options: [])
         
-        
+        //let 
 //        guard let responseData = try? JSONSerialization.jsonObject(with: data, options: []) else {
 //            isError = true
 //            errorMessage = "fail to convert json to array"
@@ -33,6 +33,7 @@ class ViewController: UIViewController, WKUIDelegate {
         //let config = WKWindowFeatures()
         let config = WKWebViewConfiguration()
 
+        //let bridgeCall = makejavafunc()
         let bridgeCall = makejavafunc()
         let bridgeScript = WKUserScript.init(source: bridgeCall, injectionTime: WKUserScriptInjectionTime.atDocumentStart, forMainFrameOnly: false)
         
