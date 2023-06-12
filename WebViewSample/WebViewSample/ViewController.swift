@@ -143,6 +143,58 @@ class ViewController: UIViewController, WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         NSLog(message)
     }
+    
+    
+    func makeData() -> [String:Any]? {
+        var nam = nams()
+        nam.s1 = "test1"
+        nam.s2 = "test2"
+        
+        for _ in 0 ..< 2 {
+            var dd = dal()
+            dd.d1 = "test3"
+            dd.d2 = "test4"
+            nam.dals.append(dd)
+        }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(nam)
+            let json = try JSONSerialization.jsonObject(with: jsonData) as? [String:Any]
+            return json
+        } catch {
+            
+        }
+        
+        return nil
+    }
+    
+    func makeData() -> String {
+        var nam = nams()
+        nam.s1 = "test1"
+        nam.s2 = "test2"
+        
+        for _ in 0 ..< 2 {
+            var dd = dal()
+            dd.d1 = "test3"
+            dd.d2 = "test4"
+            nam.dals.append(dd)
+        }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(nam)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            //let json = try JSONSerialization.jsonObject(with: jsonData) as? [String:Any]
+            return jsonString ?? ""
+        } catch {
+            
+        }
+        
+        return "1234"
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        NSLog(message)
+    }
     // rebase - test2
 }
 
@@ -152,11 +204,34 @@ struct nams: Codable {
     var dals = [dal]()
 }
 
+<<<<<<< HEAD
 struct dal: Codable {
     var d1 = ""
     var d2 = ""
 }
 
+=======
+    func call() {
+        
+    }
+
+    
+}
+
+struct nams: Codable {
+    var s1 = ""
+    var s2 = ""
+    var dals = [dal]()
+}
+
+
+
+struct dal: Codable {
+    var d1 = ""
+    var d2 = ""
+}
+
+>>>>>>> 54eea717b8b25d64d7a06af0c34490bce44254da
 struct rani: Codable {
     var r1 = ""
     var r2 = ""
